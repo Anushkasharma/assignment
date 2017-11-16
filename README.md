@@ -20,5 +20,9 @@
     2.Depending upon highest discount a user is getting based on duration * nightlyPrice and comparing with dealType and dealValue user gets bestdeal.
     3.If user gives any of the required fields empty he gets a exception which can be gracefully handled on front end or from service point of view.
     
+<h2>Scope Of Improvement</h2>
 
-        
+1. We can instead of having list of n hotels (n being name of that hotel with multiple deals) we can even compute deal on the fly by storing best deal in hashmap and accessing deal in a much quicker way.
+which would increase my performance to O(1) from O(k) [k being matched number of hotels]
+ 2. If we do that we can get rid of processDeal() method.
+  3. We can use this map mechanism when amount of hits/payload is a lot. Service is hit multiple times in a second then probably hashmap is the best solution since it will privide much much faster access to this deal, also as it gets computed on the fly there is not much space required hence reduces space complexity. 

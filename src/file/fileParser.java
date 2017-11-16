@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class fileParser {
 
     private static final String COMMA_DELIMITER = ",";
 
-    public List<hotelDealDetails> parseDealsFile(String path) throws IOException {
+    public List<hotelDealDetails> parseDealsFile(String path , String hotelName) throws IOException, ParseException {
         List<hotelDealDetails> hotelList = new ArrayList<hotelDealDetails>();
 
         BufferedReader br = null;
@@ -36,7 +37,7 @@ public class fileParser {
                 line = line.replaceAll("\"" , "");
                 String[] hotelDetailsWithDeal = line.split(COMMA_DELIMITER);
 
-                if(hotelDetailsWithDeal.length > 0 )
+                if(hotelDetailsWithDeal.length == 7 )
                 {
                     hotelDealDetails hotelDealDetails = new hotelDealDetails(
                             hotelDetailsWithDeal[0],
@@ -46,6 +47,9 @@ public class fileParser {
                             convertDealTypeToConstantDealType(hotelDetailsWithDeal[4]),
                             validationUtil.convertStringToDate(hotelDetailsWithDeal[5]),
                             validationUtil.convertStringToDate(hotelDetailsWithDeal[6]));
+
+                    // We can  perform a additional check here and can remove the one's which are not required and can only traverse on matching hotel name ones.
+                    if(hotelDealDetails.getHotelName().toLowerCase().equals(hotelName.toLowerCase()))
                     hotelList.add(hotelDealDetails);
                 }
             }
@@ -55,10 +59,8 @@ public class fileParser {
         {
             try{
                 br.close();
-            }
-            catch(IOException ie) {
-                System.out.println("Error occured while closing the BufferedReader");
-                ie.printStackTrace();
+            }catch (NullPointerException ne) {
+                throw new IOException("File was not found at specified path hence unable to proccess");
             }
         }
         return hotelList;

@@ -5,7 +5,7 @@ import java.util.Date;
 public class hotelDealDetails {
 
     String hotelName;
-    int nightlyRate;
+    double nightlyRate;
     String promoText;
     int dealValue;
     int dealType;
@@ -13,7 +13,7 @@ public class hotelDealDetails {
     Date endDate;
 
 
-    public hotelDealDetails(String hotelName, int nightlyRate, String promoText, int dealValue, int dealType, Date startDate, Date endDate) {
+    public hotelDealDetails(String hotelName, double nightlyRate, String promoText, int dealValue, int dealType, Date startDate, Date endDate) {
         this.hotelName = hotelName;
         this.nightlyRate = nightlyRate;
         this.promoText = promoText;
@@ -31,11 +31,11 @@ public class hotelDealDetails {
         this.hotelName = hotelName;
     }
 
-    public int getNightlyRate() {
+    public double getNightlyRate() {
         return nightlyRate;
     }
 
-    public void setNightlyRate(int nightlyRate) {
+    public void setNightlyRate(double nightlyRate) {
         this.nightlyRate = nightlyRate;
     }
 
@@ -97,13 +97,13 @@ public class hotelDealDetails {
 
     @Override
     public int hashCode() {
-        int result = hotelName != null ? hotelName.hashCode() : 0;
+        double result = hotelName != null ? hotelName.hashCode() : 0;
         result = 31 * result + nightlyRate;
         result = 31 * result + (promoText != null ? promoText.hashCode() : 0);
         result = 31 * result + dealValue;
         result = 31 * result + dealType;
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        return result;
+        return (int) result;
     }
 }

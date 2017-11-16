@@ -13,7 +13,7 @@ public class validationUtil {
      * @param dateString
      * @return
      */
-    public static Date convertStringToDate(String dateString) {
+    public static Date convertStringToDate(String dateString) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         sdf.setLenient(false);
@@ -29,7 +29,7 @@ public class validationUtil {
             }
 
         } catch (ParseException e) {
-            return null;
+            throw new ParseException("Date cannot be parsed.", 1);
         }
         return dateValue;
     }

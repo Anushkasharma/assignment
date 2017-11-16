@@ -6,6 +6,7 @@ import org.junit.Test;
 import pojo.hotelDealDetails;
 import util.validationUtil;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,20 +19,19 @@ public class bestHotelDealProcessorTest {
 
     @Test
     public void testProcessBestDeal_ForDatesForWhichNoDealsAreThere() throws Exception {
-    String path = "./src/sampleFile/sampleDealFile.csv";
-    String hotelName = "Hotel FooBar";
-    Date startDate = validationUtil.convertStringToDate("03/01/2015");
-    int durationOfStay = 1;
+        String path = "./src/sampleFile/sampleDealFile.csv";
+        String hotelName = "Hotel FooBar";
+         Date startDate = validationUtil.convertStringToDate("03/01/2015");
+        int durationOfStay = 1;
 
         String promoTextValue = hotelDealProcessor.processBestDeal(path, hotelName, startDate, durationOfStay);
-
         Assert.assertEquals("No deals available", promoTextValue);
     }
 
 
 
     @Test
-    public void testProcess_Success() {
+    public void testProcess_Success() throws ParseException {
         List<hotelDealDetails> hoteDealDetailsList = new ArrayList<>();
 
         hotelDealDetails hotel1 = new hotelDealDetails("Hotel Foobar",250,"$50 off your stay 3 nights or more",Integer.parseInt("-50"),3,validationUtil.convertStringToDate("3/1/2016"),validationUtil.convertStringToDate("3/31/2016"));

@@ -5,9 +5,11 @@ import pojo.hotelDealDetails;
 import util.validationUtil;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.DataFormatException;
 
 public class bestHotelDealProcessor {
     
@@ -18,9 +20,8 @@ public class bestHotelDealProcessor {
 
     fileParser parser = new fileParser();
     validationUtil util = new validationUtil();
-    
 
-    public String processBestDeal(String path, String hotelName, Date checkInDate, int durationOfDays) throws Exception {
+    public String processBestDeal(String path, String hotelName, Date checkInDate, int durationOfDays) throws IOException, DataFormatException {
         
         performValidation(path, hotelName, checkInDate, durationOfDays);
         
@@ -29,9 +30,9 @@ public class bestHotelDealProcessor {
         String promoTextValue = null;
 
         try {
-            hotelDetailsList = parser.parseDealsFile(path);
-        } catch (IOException e) {
-            throw new Exception(e.getMessage());
+            hotelDetailsList = parser.parseDealsFile(path , hotelName);
+        } catch (ParseException e) {
+            throw new IOException(e.getMessage());
         }
 
         //Step 2: upon parsing send this list to a main process function which performs business logic.
@@ -40,22 +41,22 @@ public class bestHotelDealProcessor {
         return promoTextValue;
     }
 
-    private void performValidation(String path, String hotelName, Date checkInDate, int durationOfDays) throws Exception {
+    private void performValidation(String path, String hotelName, Date checkInDate, int durationOfDays) throws DataFormatException {
 
         if(path.isEmpty()) {
-            throw new Exception("There should be dealsFile provided in order to get the best deal");
+            throw new DataFormatException("There should be dealsFile provided in order to get the best deal");
         }
 
-        if(hotelName.isEmpty()) {
-            throw new Exception("Hotel Name cannot be empty");
+        if(hotelName.isEmpty() || hotelName.equals("")) {
+            throw new DataFormatException("Hotel Name cannot be empty");
         }
 
-        if(checkInDate.equals("")) {
-            throw new Exception("There has to be a check in date provided");
+        if(checkInDate == null) {
+            throw new DataFormatException("Date provided is incorrect");
         }
 
-        if(durationOfDays == 0 ) {
-            throw new Exception("Minimum duration is 1");
+        if(durationOfDays == 0 || durationOfDays < 0) {
+            throw new DataFormatException("Minimum duration is 1");
         }
     }
 
@@ -76,7 +77,7 @@ public class bestHotelDealProcessor {
                         (hotel.getEndDate().after(checkoutDate) || hotel.getEndDate().equals(checkoutDate))) {
 
                     //check discount provided by each matching hotel and return least.
-                    int totalCost = hotel.getNightlyRate()*durationOfDays;
+                    double totalCost = hotel.getNightlyRate()*durationOfDays;
                     double discount = getTotalDiscount(totalCost, hotel.getDealType(), hotel.getDealValue(), durationOfDays);
 
                     if(discount < maxDiscount) {
@@ -96,7 +97,7 @@ public class bestHotelDealProcessor {
         return resultantPromoText;
     }
 
-    public double getTotalDiscount(int totalCost, int dealType, int dealValue , int duration) {
+    public double getTotalDiscount(double totalCost, int dealType, int dealValue , int duration) {
         //Assumption 2
         //In assignment given values of deal is in negative(i have considered it same as examples in assignment and have added so it gets subtracted.)
         double finalDiscountedPrice = totalCost;
