@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d614bbfc-3b69-434d-81c8-a901b7b55c08" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tripAdvisor/Main.class" afterPath="$PROJECT_DIR$/out/production/tripAdvisor/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tripAdvisor/businesshelper/bestHotelDealProcessor.class" afterPath="$PROJECT_DIR$/out/production/tripAdvisor/businesshelper/bestHotelDealProcessor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tripAdvisor/file/fileParser.class" afterPath="$PROJECT_DIR$/out/production/tripAdvisor/file/fileParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tripAdvisor/util/validationUtil.class" afterPath="$PROJECT_DIR$/out/production/tripAdvisor/util/validationUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +21,8 @@
       <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="92" lean-forward="false" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="92" />
+            <state relative-caret-position="360">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,11 +70,11 @@
         <option value="$PROJECT_DIR$/test/utilTest/validationUtilTest.java" />
         <option value="$PROJECT_DIR$/test/businesshelperTest/bestHotelDealProcessorTest.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/file/fileParser.java" />
         <option value="$PROJECT_DIR$/src/util/validationUtil.java" />
         <option value="$PROJECT_DIR$/src/businesshelper/bestHotelDealProcessor.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
       </list>
     </option>
   </component>
@@ -680,7 +676,7 @@
       <option name="presentableId" value="Default" />
       <updated>1510794629069</updated>
       <workItem from="1510794633228" duration="11219000" />
-      <workItem from="1510806393329" duration="3386000" />
+      <workItem from="1510806393329" duration="3535000" />
     </task>
     <servers />
   </component>
@@ -717,7 +713,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14605000" />
+    <option name="totallyTimeSpent" value="14754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -941,8 +937,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="92" lean-forward="false" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="92" />
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

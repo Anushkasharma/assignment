@@ -9,7 +9,6 @@ public class main {
         static bestHotelDealProcessor bestHotelDealProcessor = new bestHotelDealProcessor();
 
     public static void main(String[] args) throws Exception {
-
         String dealAvailable;
 
         //sample input
