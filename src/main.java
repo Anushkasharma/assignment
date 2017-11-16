@@ -11,8 +11,8 @@ public class main {
     public static void main(String[] args) throws Exception {
 
         String dealAvailable;
-        //sample input
 
+        //sample input
         String samplePath = "./src/sampleFile/sampleDealFile.csv";
         Date checkinDate = validationUtil.convertStringToDate("03/01/2016");
         int durationOfDays = 6;
