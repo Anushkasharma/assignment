@@ -61,17 +61,14 @@ public class bestHotelDealProcessor {
     }
 
     public String processDeal(List<hotelDealDetails> hotelDetailsList, String hotelName, Date checkInDate, int durationOfDays) {
-        //Initial Check considering hotelName entered by user is not a type and accurately matches names in the list.
 
-        double maxDiscount = Integer.MAX_VALUE;
-        String resultantPromoText = null;
-        String userEnteredHotelName = hotelName.toLowerCase();
+        double minimumTotalCostAfterDiscount = Integer.MAX_VALUE;
+        String resultantPromoText = "No deals available";
         Date checkoutDate = validationUtil.calculateCheckOutDate(checkInDate, durationOfDays); //helper method which gives me checkoutDate
 
         for(hotelDealDetails hotel : hotelDetailsList) {
-            String hotelNameFromSheet = hotel.getHotelName().toLowerCase();
-            //check if hotel name matches
-            if(hotelNameFromSheet.equals(userEnteredHotelName)) {
+            //Considering hotelName entered by user is not a type and accurately matches names in the list.
+            if(hotel.getHotelName().equalsIgnoreCase(hotelName)) {
                 //check if duration entered by user matches discount of first entry of that hotel from list.
                 if((hotel.getStartDate().before(checkInDate) || hotel.getStartDate().equals(checkInDate)) &&
                         (hotel.getEndDate().after(checkoutDate) || hotel.getEndDate().equals(checkoutDate))) {
@@ -80,9 +77,9 @@ public class bestHotelDealProcessor {
                     double totalCost = hotel.getNightlyRate()*durationOfDays;
                     double discount = getTotalDiscount(totalCost, hotel.getDealType(), hotel.getDealValue(), durationOfDays);
 
-                    if(discount < maxDiscount) {
-                        maxDiscount = discount;
-                        if(maxDiscount == totalCost || hotel.getDealType() == 0) {
+                    if(discount < minimumTotalCostAfterDiscount) {
+                        minimumTotalCostAfterDiscount = discount;
+                        if(minimumTotalCostAfterDiscount == totalCost || hotel.getDealType() == 0) {
                             resultantPromoText = "No deals available";
                         }else {
                             resultantPromoText = hotel.getPromoText();
@@ -90,9 +87,6 @@ public class bestHotelDealProcessor {
                     }
                 }
             }
-        }
-        if(maxDiscount == Integer.MAX_VALUE) {
-            resultantPromoText = "No deals available";
         }
         return resultantPromoText;
     }

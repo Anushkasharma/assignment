@@ -49,7 +49,7 @@ public class fileParser {
                             validationUtil.convertStringToDate(hotelDetailsWithDeal[6]));
 
                     // We can  perform a additional check here and can remove the one's which are not required and can only traverse on matching hotel name ones.
-                    if(hotelDealDetails.getHotelName().toLowerCase().equals(hotelName.toLowerCase()))
+                    if(hotelDealDetails.getHotelName().equalsIgnoreCase(hotelName))
                     hotelList.add(hotelDealDetails);
                 }
             }

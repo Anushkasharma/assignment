@@ -12,7 +12,7 @@ public class main {
         static bestHotelDealProcessor bestHotelDealProcessor = new bestHotelDealProcessor();
 
     public static void main(String[] args) throws Exception {
-        String dealAvailable;
+        String bestDealAvailable;
 
         //Get input from user
         Scanner reader = new Scanner(System.in);
@@ -46,14 +46,14 @@ public class main {
         //validations on these inputs are taken care at business layer.
         try {
             //businesshelper call to get best deal.
-            dealAvailable = bestHotelDealProcessor.processBestDeal(path, hotelName, checkInDate, duration);
+            bestDealAvailable = bestHotelDealProcessor.processBestDeal(path, hotelName, checkInDate, duration);
         } catch (DataFormatException e) {
             throw new Exception(e.getMessage());
         }catch (IOException e) {
             throw new Exception(e.getMessage());
         }
 
-        System.out.println("Best deal : "+ dealAvailable);
+        System.out.println("Best deal : "+ bestDealAvailable);
         reader.close();
     }
 }
