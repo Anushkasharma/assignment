@@ -99,7 +99,6 @@ public class bestHotelDealProcessor {
     public double getTotalDiscount(int totalCost, int dealType, int dealValue , int duration) {
         //Assumption 2
         //In assignment given values of deal is in negative(i have considered it same as examples in assignment and have added so it gets subtracted.)
-
         double finalDiscountedPrice = totalCost;
         if(dealType == 1) {
             double percentageValue = (dealValue)/100.00;

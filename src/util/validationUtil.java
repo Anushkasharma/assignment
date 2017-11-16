@@ -34,7 +34,6 @@ public class validationUtil {
         return dateValue;
     }
 
-
     /**
      * Add duration to checkInDate.
      *
@@ -46,7 +45,7 @@ public class validationUtil {
 
         Calendar cal  = Calendar.getInstance();
         cal.setTime(updateDate);
-        cal.add(Calendar.DATE, noOfDays-1);
+        cal.add(Calendar.DATE, noOfDays);
         java.util.Date date = cal.getTime();
         return new java.sql.Date(date.getTime());
     }

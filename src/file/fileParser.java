@@ -25,7 +25,7 @@ public class fileParser {
             br = new BufferedReader(new FileReader(path));
 
             //Create List for holding hotelDealDetails objects
-            String line = "";
+            String line;
 
             //Read to skip the header
             br.readLine();
@@ -33,6 +33,7 @@ public class fileParser {
             //Reading from the second line
             while ((line = br.readLine()) != null)
             {
+                line = line.replaceAll("\"" , "");
                 String[] hotelDetailsWithDeal = line.split(COMMA_DELIMITER);
 
                 if(hotelDetailsWithDeal.length > 0 )
@@ -52,24 +53,20 @@ public class fileParser {
             throw new IOException("File was not found at specified path");
         }finally
         {
-            try
-            {
+            try{
                 br.close();
             }
-            catch(IOException ie)
-            {
+            catch(IOException ie) {
                 System.out.println("Error occured while closing the BufferedReader");
                 ie.printStackTrace();
             }
         }
-
         return hotelList;
     }
 
 
-    private static int convertDealTypeToConstantDealType(String s) {
-
-        switch(s) {
+    private static int convertDealTypeToConstantDealType(String dealType) {
+        switch(dealType) {
             case constantsFile.percentage_Type_Deal_Constant :
                 return 1;
 
