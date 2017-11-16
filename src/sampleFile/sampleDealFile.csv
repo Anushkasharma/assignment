@@ -1,0 +1,6 @@
+"Hotel_Name,Nightly_Rate,Promo_Txt,Deal_Value,Deal_Type,Start_Date,End_Date"
+"Hotel Foobar,250,$50 off your stay 3 nights or more,-50,rebate_3plus,3/1/2016,3/31/2016"
+"Hotel Foobar,250,5% off your stay,-5,pct,3/1/2016,3/15/2016"
+"Hotel Foobar,250,$20 off your stay,-20,rebate,3/7/2016,3/15/2016"
+"Hotel FooFun,300,10% off your stay,-10,pct,3/1/2016,4/15/2016"
+"Hotel FooFun,300,10% off your stay,-10,aaa,01/1/2017,01/15/2017"
